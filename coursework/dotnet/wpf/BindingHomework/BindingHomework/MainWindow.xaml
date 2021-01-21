@@ -1,0 +1,157 @@
+﻿<Window x:Class="BindingHomework.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BindingHomework"
+        mc:Ignorable="d"
+        Title="计算机学院.NET技术课程成绩"
+        Height="450"
+        Width="800"
+        FontSize="16">
+    <Window.DataContext>
+        <local:DataContext />
+    </Window.DataContext>
+    <Grid Margin="2 0 2 2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Column="0">
+            <ComboBox DockPanel.Dock="Top"
+                      ItemsSource="{Binding Path=Majors, Mode=OneTime}"
+                      SelectedIndex="0"
+                      SelectedItem="{Binding Path=SelectedMajor, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" />
+            <TreeView x:Name="TreeView"
+                      ItemsSource="{Binding Path=TreeNodes, Mode=OneWay}"
+                      SelectedItemChanged="TreeView_OnSelectedItemChanged">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type local:TreeNode}"
+                                              ItemsSource="{Binding Path=Children}">
+                        <TreeViewItem Header="{Binding Path=Name, Mode=OneWay}" />
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </DockPanel>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <DockPanel Grid.Row="0"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="2 0">
+                        <Label>姓名</Label>
+                        <TextBox x:Name="FullName"
+                                 Width="Auto"
+                                 Padding="1"
+                                 VerticalAlignment="Center"
+                                 Text="{Binding Path=Student.Name, Mode=TwoWay}" />
+                    </DockPanel>
+
+                    <DockPanel Grid.Row="0"
+                               Grid.Column="1"
+                               VerticalAlignment="Center"
+                               Margin="2 0">
+                        <Label>性别</Label>
+                        <TextBox x:Name="Sex"
+                                 Width="Auto"
+                                 Padding="1"
+                                 VerticalAlignment="Center"
+                                 Text="{Binding Path=Student.Sex, Mode=TwoWay}" />
+                    </DockPanel>
+
+                    <DockPanel Grid.Row="1"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="2 0">
+                        <Label>学号</Label>
+                        <TextBox x:Name="StudentId"
+                                 Width="Auto"
+                                 Padding="1"
+                                 VerticalAlignment="Center"
+                                 Text="{Binding Student.StudentId, Mode=TwoWay}" />
+                    </DockPanel>
+
+                    <DockPanel Grid.Row="1"
+                               Grid.Column="1"
+                               VerticalAlignment="Center"
+                               Margin="2 0">
+                        <Label>年龄</Label>
+                        <TextBox x:Name="Age"
+                                 Width="Auto"
+                                 Padding="1"
+                                 VerticalAlignment="Center"
+                                 Text="{Binding Student.Age, Mode=TwoWay}" />
+                    </DockPanel>
+
+                </Grid>
+
+                <Image x:Name="Avatar"
+                       VerticalAlignment="Center"
+                       Grid.Column="0"
+                       Source="{Binding Student.Source, Mode=OneWay}"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <DockPanel Margin="2 0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center">
+                    <Label>平时成绩</Label>
+                    <TextBox x:Name="RegularScore"
+                             Width="Auto"
+                             Padding="1"
+                             VerticalAlignment="Center"
+                             Text="{Binding Student.RegularScore, Mode=TwoWay}" />
+                </DockPanel>
+
+                <DockPanel Margin="2 0"
+                           Grid.Column="1"
+                           VerticalAlignment="Center">
+                    <Label>期末成绩</Label>
+                    <TextBox x:Name="FinalExamScore"
+                             Width="Auto"
+                             Padding="1"
+                             VerticalAlignment="Center"
+                             Text="{Binding Student.FinalExamScore, Mode=TwoWay}" />
+                </DockPanel>
+
+                <DockPanel Margin="2 0"
+                           Grid.Column="2"
+                           VerticalAlignment="Center">
+                    <Label Foreground="Green">总成绩</Label>
+                    <TextBlock x:Name="TotalScore"
+                               Width="Auto"
+                               Padding="1"
+                               VerticalAlignment="Center"
+                               Foreground="Red"
+                               Text="{Binding Student.TotalScore, Mode=OneWay}" />
+                </DockPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

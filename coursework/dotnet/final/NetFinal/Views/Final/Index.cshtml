@@ -1,0 +1,97 @@
+﻿@model NetFinal.Models.ViewModel
+
+@{
+    ViewData["Title"] = "学生成绩查看";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <label for="college-select">选择学院：</label>
+        <form asp-action="ChooseCollege" class="form-inline">
+            <select id="college-select" class="form-control"
+                    name="selected-college">
+                @foreach (var c in Model.College)
+                {
+                    <option selected="@(c == Model.SelectedCollege)">
+                        @c
+                    </option>
+                }
+            </select>
+            <button style="margin-left: 5px" class="btn btn-info" type="submit">确定</button>
+        </form>
+
+        <label for="student-tree" style="margin-top: 10px">选择学生：</label>
+        <div id="student-tree">
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="col-md-6">
+            <div class="form-inline">
+                <label for="student-id">学号：</label>
+                <input id="student-id"
+                       type="text" class="form-control" value="@Model.Student.Id" disabled/>
+            </div>
+            <div class="form-inline" style="margin-top: 10px">
+                <label for="student-gender">性别：</label>
+                <input id="student-gender"
+                       type="text" class="form-control" value="@Model.Student.Gender" disabled/>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-inline">
+                <label for="student-name">姓名：</label>
+                <input id="student-name"
+                       type="text" class="form-control" value="@Model.Student.Name" disabled/>
+            </div>
+            <div class="form-inline" style="margin-top: 10px">
+                <label for="student-class">班级：</label>
+                <input id="student-class"
+                       type="text" class="form-control" value="@Model.Student.Class" disabled/>
+            </div>
+        </div>
+
+        <div class="col-md-12" style="padding-top: 20px">
+            <label>课程成绩</label>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>课程</th>
+                    <th>成绩</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var c in Model.Course)
+                {
+                    <form asp-action="UpdateScore">
+                        <input type="hidden" name="id" value="@c.Id"/>
+                        <input type="hidden" name="course-name" value="@c.CourseName"/>
+                        <tr>
+                            <td>@c.CourseName</td>
+                            <td>
+                                <input type="number" min="0" step="1" name="score" class="form-control" value="@c.Score"/>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-info">更新成绩</button>
+                            </td>
+                        </tr>
+                    </form>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function () {
+                    $.getJSON("/Final/TreeViewData", function (tree) {
+                      $('#student-tree').treeview({
+                        data: tree,
+                        enableLinks: true,
+                        showBorder: true
+                      });
+                    });
+                })
+</script>

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - 学生成绩查看</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap-theme.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/lib/bootstrap-treeview/src/css/bootstrap-treeview.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+
+    <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-treeview/src/js/bootstrap-treeview.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">学生成绩查看</a>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2019 - 学生成绩查看
+    </div>
+</footer>
+
+@RenderSection("Scripts", required: false)
+</body>
+</html>

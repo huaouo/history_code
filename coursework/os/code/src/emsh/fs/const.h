@@ -1,0 +1,66 @@
+#ifndef __EMSH_FS_CONST
+#define __EMSH_FS_CONST
+
+#define DISK_PATH "disk"
+// blocks
+#define CACHE_SIZE 512
+#define ADDRBLK_ADDR_CNT 256
+#define MAX_FILENAME_LEN 14
+#define DBLK_ENTRY_CNT 32
+#define FREEBLK_STACK_LEN 128
+// direct
+#define INODE_DADDR_CNT 4
+#define INODE_CNT 1008
+#define LNK_ENTRY_PER_BLK 256
+#define BLK_SIZE 512
+#define DBLK_CNT 64897
+#define RESERVED_BLK_CNT 514
+#define SBLK_MAGIC (uint16_t) 0x0079637a
+#define MAX_BLK_ID 65535
+#define DBLK_BEG_ID 128
+#define IBLK_BEG_ID 2
+#define SBLK_ID 1
+// actually, this block wasn't used
+#define LAST_FREEBLK_ID 65408
+// 128 blocks
+#define DBLK_GROUP_SIZE 128
+// magic, a number bigger than INODE_CNT
+// the following two constants represents
+// STATUS of Blk or INode allocation
+#define INODE_FAIL_ID 1214
+#define DBLK_FAIL_ID 0
+#define INODE_PER_BLK 8
+#define INODE_DADDR_BLK_CNT 4
+#define INODE_DJADDR_BLK_CNT 260
+
+enum StatusCode {
+  SUCCESS = 0,
+  RUN_OUT_OF_INODE,
+  RUN_OUT_OF_DBLK,
+  PERMISSION_DENIED,
+  FILE_EXISTS,
+  FILENAME_TOO_LONG,
+  PRESERVE_ROOT,
+  NO_SUCH_FILE_OR_DIRECTORY,
+  MISSING_OPERAND,
+  DIR_NOT_EMPTY,
+  NOT_DIR,
+  TOO_MANY_OPERANDS,
+  SAME_FILE,
+  MOV_TO_SUB_DIR,
+  INVALID_ARGS,
+  INVALID_USERNAME,
+  INTERNAL_ERROR,
+  INVALID_GROUPNAME,
+  IS_DIR,
+  HARDLINK_NOT_ALLOWED_FOR_DIR,
+  AUTH_FAIL,
+  PASSWD_MISMATCH
+};
+
+#define IS_DIRECTORY (1 << 9)
+
+#define PRIVILEGE_MAX 0777
+#define FILE_DEFAULT_PRIVILEGE 0666
+
+#endif

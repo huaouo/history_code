@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Student\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Student\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Student\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Student\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Student\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
+  </ItemGroup>
+
+</Project>
