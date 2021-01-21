@@ -1,0 +1,28 @@
+digraph G {
+rankdir = LR;
+"" [shape=none];
+node [shape = doublecircle]; 
+G;P;
+node [shape = circle];
+""->G [label = "Start"]
+G->E [label = "e"]
+A->B [label = "0"]
+E->A [label = "e"]
+B->F [label = "e"]
+E->C [label = "e"]
+D->F [label = "e"]
+C->D [label = "1"]
+F->E [label = "e"]
+F->H [label = "e"]
+G->H [label = "e"]
+H->I [label = "e"]
+I->J [label = "0"]
+J->K [label = "e"]
+K->L [label = "1"]
+L->O [label = "e"]
+O->M [label = "e"]
+M->N [label = "0"]
+N->M [label = "e"]
+N->P [label = "e"]
+O->P [label = "e"]
+}

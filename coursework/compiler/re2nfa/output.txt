@@ -1,0 +1,5 @@
+ABCDEFGHIJKLMNOP
+0123456789
+G
+P
+(G, e, E)(A, 0, B)(E, e, A)(B, e, F)(E, e, C)(D, e, F)(C, 1, D)(F, e, E)(F, e, H)(G, e, H)(H, e, I)(I, 0, J)(J, e, K)(K, 1, L)(L, e, O)(O, e, M)(M, 0, N)(N, e, M)(N, e, P)(O, e, P)

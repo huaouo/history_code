@@ -1,0 +1,7 @@
+0 S->E
+1 E->aA
+2 E->bB
+3 A->cA
+4 A->d
+5 B->cB
+6 B->d
